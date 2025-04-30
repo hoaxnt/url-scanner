@@ -1,32 +1,3 @@
-// document.getElementById('scanBtn').addEventListener('click', () => {
-//   const url = document.getElementById('urlInput').value.trim();
-//   const resultDiv = document.getElementById('result');
-//   const loadingDiv = document.getElementById('loading');
-
-//   if (!url) {
-//     resultDiv.innerHTML = `<span style="color:red;">⚠️ Please enter a URL.</span>`;
-//     return;
-//   }
-
-//   resultDiv.innerHTML = "";
-//   loadingDiv.style.display = "block";
-
-//   chrome.runtime.sendMessage({ action: "scanUrl", url }, (response) => {
-//     loadingDiv.style.display = "none";
-
-//     if (response.success) {
-//       const stats = response.data.data.attributes.stats;
-//       resultDiv.innerHTML = `
-//         ✅ Harmless: ${stats.harmless}<br>
-//         ⚠️ Malicious: ${stats.malicious}<br>
-//         ❓ Suspicious: ${stats.suspicious}<br>
-//         🧪 Undetected: ${stats.undetected}
-//       `;
-//     } else {
-//       resultDiv.innerHTML = `<span style="color:red;">❌ Error: ${response.error}</span>`;
-//     }
-//   });
-// });
 document.getElementById("scanBtn").addEventListener("click", () => {
   const url = document.getElementById("urlInput").value.trim();
 
@@ -47,8 +18,11 @@ document.getElementById("scanBtn").addEventListener("click", () => {
     }
 
     if (response.success) {
+      let result = JSON.stringify(response.data, null, 2);
       console.log("Scan success:", response.data);
-      // You can display result here!
+
+      document.getElementById("result").textContent = result.data;
+
     } else {
       console.error("Scan failed:", response.error);
     }

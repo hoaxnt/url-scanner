@@ -5,8 +5,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     fetch("https://www.virustotal.com/api/v3/urls", {
       method: "POST",
       headers: {
-        "x-apikey":
-          "5fa5057d2082c3016151e34e10ab2062190826b98b5b40bc1b179c825e622513", // <<-- Make sure you replace this
+        "x-apikey": "5fa5057d2082c3016151e34e10ab2062190826b98b5b40bc1b179c825e622513", // <<-- Make sure you replace this
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: `url=${encodeURIComponent(request.url)}`,
@@ -26,6 +25,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse({ success: false, error: error.message });
       });
 
-    return true; // IMPORTANT: Tell Chrome we're sending async response
+    return true; 
   }
 });
