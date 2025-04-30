@@ -1,22 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>SusUrl - URL Scanner</title>
-  <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-  <div class="popup-container">
-    <h1>URL Scanner (beta)</h1>
-    <p class="subtitle">Your defense against suspicious links.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>URL Scanner (Beta)</title>
+    <link rel="stylesheet" href="popup.css" />
+    <style>
+      /* Quick fix if you haven't updated popup.css yet */
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="popup-container">
+      <header>
+        <h1>URL Scanner (Beta)</h1>
+        <p class="subtitle">Protect yourself from suspicious URLs.</p>
+      </header>
 
-    <input type="text" id="urlInput" value="https://chatgpt.com/?temporary-chat=true" placeholder="Enter a URL to scan...">
-    <button id="scanBtn">Scan</button>
+      <section class="input-section">
+        <input
+          type="text"
+          id="urlInput"
+          value="http://17ebook.com/"
+          placeholder="URL to Scan"
+        />
+        <button id="scanBtn">Scan</button>
+      </section>
 
-    <div id="loading" style="display:none;">🔎 Scanning...</div>
-    <div id="result"></div>
-  </div>
+      <section id="loading" style="display: none">
+        <p>🔎 Scanning... Please wait.</p>
+      </section>
 
-  <script src="popup.js"></script>
-</body>
+      <section
+        id="result-section"
+        style="
+          display: none;
+          max-height: 200px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          padding: 10px;
+          background: #f5f5f5;
+          border-radius: 5px;
+          font-size: 0.9em;
+          margin-top: 15px;
+          border: 1px solid #ddd;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          white-space: normal;
+        "
+      >
+        <h2 style="font-size: 1.1em; margin-bottom: 10px">🔍 Scan Result</h2>
+        <p><strong>Type:</strong> <span id="result-type">N/A</span></p>
+        <p><strong>ID:</strong> <span id="result-id">N/A</span></p>
+        <p>
+          <strong>Link:</strong>
+          <a
+            href="#"
+            target="_blank"
+            id="result-link"
+            style="word-break: break-all"
+            >View Full Report</a
+          >
+        </p>
+      </section>
+
+      <footer style="margin-top: 20px; font-size: 0.8em; color: #999">
+        <p>Powered by VirusTotal API</p>
+      </footer>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
 </html>

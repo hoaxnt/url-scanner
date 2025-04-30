@@ -1,30 +1,45 @@
-document.getElementById("scanBtn").addEventListener("click", () => {
-  const url = document.getElementById("urlInput").value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("scanBtn").addEventListener("click", () => {
+    const url = document.getElementById("urlInput").value.trim();
 
-  if (!url) {
-    alert("Please enter a URL!");
-    return;
-  }
-
-  chrome.runtime.sendMessage({ action: "scanUrl", url }, (response) => {
-    if (chrome.runtime.lastError) {
-      console.error("Runtime error:", chrome.runtime.lastError.message);
+    if (!url) {
+      alert("Please enter a URL!");
       return;
     }
 
-    if (!response) {
-      console.error("No response received.");
-      return;
-    }
+    // Show loading indicator
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("result-section").style.display = "none";
 
-    if (response.success) {
-      let result = JSON.stringify(response.data, null, 2);
-      console.log("Scan success:", response.data);
+    chrome.runtime.sendMessage({ action: "scanUrl", url }, (response) => {
+      // Hide loading
+      document.getElementById("loading").style.display = "none";
 
-      document.getElementById("result").textContent = result.data;
+      if (chrome.runtime.lastError) {
+        console.error("Runtime error:", chrome.runtime.lastError.message);
+        return;
+      }
 
-    } else {
-      console.error("Scan failed:", response.error);
-    }
+      if (!response || !response.data || !response.data.data) {
+        console.error("No valid response received.");
+        return;
+      }
+
+      if (response.success) {
+        const data = response.data.data;
+
+        // Fill in result elements
+        document.getElementById("result-type").textContent = data.type;
+        document.getElementById("result-id").textContent = data.id;
+        document.getElementById("result-link").href = data.links.self;
+
+        // Show result section
+        document.getElementById("result-section").style.display = "block";
+        console.log("Scan success:", data);
+
+      } else {
+        console.error("Scan failed:", response.error);
+      }
+    });
   });
 });
