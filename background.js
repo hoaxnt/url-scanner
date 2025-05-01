@@ -1,23 +1,23 @@
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "scanUrl") {
     console.log("[Background] Received scan request:", request.url);
 
-    fetch("https://www.virustotal.com/api/v3/urls", {
-      method: "POST",
+    fetch(`https://malicious-scanner.p.rapidapi.com/rapid/url?url=${request.url}`, {
+      method: "GET",
       headers: {
-        "x-apikey": "5fa5057d2082c3016151e34e10ab2062190826b98b5b40bc1b179c825e622513", // <<-- Make sure you replace this
-        "Content-Type": "application/x-www-form-urlencoded",
+        "x-rapidapi-key": "41425b3fbemsh26fdeaccf1c7ce9p153dacjsn62e1fb90e609",
+        "x-rapidapi-host": "malicious-scanner.p.rapidapi.com",
       },
-      body: `url=${encodeURIComponent(request.url)}`,
     })
-      .then((response) => {
+    .then((response) => { 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.json();
       })
-      .then((data) => {
-        console.log("[Background] VirusTotal data:", data);
+      .then((data) => { 
+        console.log("[Background] Scan Result:", data);
         sendResponse({ success: true, data: data });
       })
       .catch((error) => {
@@ -25,6 +25,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse({ success: false, error: error.message });
       });
 
-    return true; 
+    return true;
   }
 });

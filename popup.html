@@ -32,27 +32,31 @@
         <p>🔎 Scanning... Please wait.</p>
       </section>
 
+
+      
       <section
         id="result-section"
         style="
-          display: none;
-          max-height: 200px;
-          overflow-y: auto;
-          overflow-x: hidden;
-          padding: 10px;
-          background: #f5f5f5;
-          border-radius: 5px;
-          font-size: 0.9em;
-          margin-top: 15px;
-          border: 1px solid #ddd;
-          word-wrap: break-word;
-          overflow-wrap: break-word;
-          white-space: normal;
-        "
+        display: none;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 10px;
+        background: #f5f5f5;
+        border-radius: 5px;
+        font-size: 0.9em;
+        margin: 15px 10px 0 10px;
+        border: 1px solid #ddd;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+      "
+      
       >
         <h2 style="font-size: 1.1em; margin-bottom: 10px">🔍 Scan Result</h2>
-        <p><strong>Type:</strong> <span id="result-type">N/A</span></p>
-        <p><strong>ID:</strong> <span id="result-id">N/A</span></p>
+        <p><strong>Status:</strong> <span id="result-status">N/A</span></p>
+        <p><strong>Details:</strong> <span id="result-details">N/A</span></p>
         <p>
           <strong>Link:</strong>
           <a
@@ -64,6 +68,8 @@
           >
         </p>
       </section>
+
+
 
       <footer style="margin-top: 20px; font-size: 0.8em; color: #999">
         <p>Powered by VirusTotal API</p>
