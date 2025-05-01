@@ -1,4 +1,4 @@
-# ✨ URL Scanner (beta)
+# ✨ URL Scanner (Beta)
 
 > A simple Microsoft Edge extension that scans URLs to detect suspicious links before you click.
 
@@ -6,7 +6,7 @@
 
 ## 📸 Preview
 
-https://github.com/hoaxnt/Susurl.git
+![URL Scanner Screenshot](preview/url-scanner-beta.png)
 
 ---
 
@@ -23,10 +23,10 @@ https://github.com/hoaxnt/Susurl.git
 # 📥 Manual Installation (via GitHub)
 
 # 1. Clone the repository
-git clone https://github.com/hoaxnt/susurl.git
+git clone https://github.com/hoaxnt/url-scanner-beta.git
 
 # 2. Navigate into the project folder
-cd susurl
+cd url-scanner-beta
 
 # 3. Open Microsoft Edge and go to:
 #    edge://extensions
