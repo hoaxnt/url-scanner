@@ -1,4 +1,4 @@
-# ✨ Susurl (beta)
+# ✨ URL Scanner (beta)
 
 > A simple Microsoft Edge extension that scans URLs to detect suspicious links before you click.
 
