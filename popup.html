@@ -5,7 +5,6 @@
     <title>URL Scanner (Beta)</title>
     <link rel="stylesheet" href="popup.css" />
     <style>
-      /* Quick fix if you haven't updated popup.css yet */
       * {
         box-sizing: border-box;
       }
@@ -22,8 +21,8 @@
         <input
           type="text"
           id="urlInput"
-          value="http://17ebook.com/"
           placeholder="URL to Scan"
+          value="https://developer.chrome.com/docs/extensions/reference/api/runtime"
         />
         <button id="scanBtn">Scan</button>
       </section>
@@ -32,8 +31,6 @@
         <p>🔎 Scanning... Please wait.</p>
       </section>
 
-
-      
       <section
         id="result-section"
         style="
@@ -54,25 +51,45 @@
       "
       
       >
-        <h2 style="font-size: 1.1em; margin-bottom: 10px">🔍 Scan Result</h2>
-        <p><strong>Status:</strong> <span id="result-status">N/A</span></p>
-        <p><strong>Details:</strong> <span id="result-details">N/A</span></p>
-        <p>
-          <strong>Link:</strong>
-          <a
-            href="#"
-            target="_blank"
-            id="result-link"
-            style="word-break: break-all"
-            >View Full Report</a
-          >
-        </p>
+      <h2 style="font-size: 1.6em; font-weight: bold; margin-bottom: 15px; color: #333;">🔍 <span id="scan-status-title">Scan Result</span></h2>
+
+      <!-- Status with dynamic color change based on the scan result -->
+      <p style="font-size: 1.1em; margin-bottom: 12px;">
+        <strong>Status:</strong> 
+        <span id="result-status" style="font-size: 1.2em; font-weight: bold; color: #ff9800;">N/A</span>
+      </p>
+      
+      <!-- Details section with stronger emphasis and increased font size -->
+      <p style="font-size: 1.1em; margin-bottom: 12px;">
+        <strong>Details:</strong> 
+        <span id="result-details" style="font-size: 1.1em; color: #555;">N/A</span>
+      </p>
+      
+      <!-- Link to the full report, styled as a button with hover effect -->
+      <p style="font-size: 1.1em; margin-bottom: 15px;">
+        <strong>Link:</strong>
+        <a href="#" target="_blank" id="result-link" style="
+          text-decoration: none; 
+          color: #2196f3; 
+          font-weight: bold; 
+          padding: 8px 15px; 
+          border: 2px solid #2196f3; 
+          border-radius: 4px;
+          display: inline-block;
+          transition: all 0.3s ease;
+        "
+        onmouseover="this.style.backgroundColor='#2196f3'; this.style.color='#fff';"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#2196f3';">
+          View Full Report
+        </a>
+      </p>
+      
       </section>
 
 
 
       <footer style="margin-top: 20px; font-size: 0.8em; color: #999">
-        <p>Powered by VirusTotal API</p>
+        <p>© 2025 Hoaxnt. All rights reserved.</p>
       </footer>
     </div>
 
