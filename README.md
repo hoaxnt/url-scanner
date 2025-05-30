@@ -1,4 +1,4 @@
-# ✨ URL Scanner (Beta)
+# ✨ URL Scanner
 
 > A simple Microsoft Edge extension that scans URLs to detect suspicious links before you click.
 
